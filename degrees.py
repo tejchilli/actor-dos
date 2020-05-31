@@ -93,14 +93,14 @@ def shortest_path(source, target):
     """
 
     frontier = QueueFrontier()
-    frontier.add(Node(state = source, parent = None, action = None))
 
-    explored = set()
-
-    """for pair in neighbors_for_person(source):
+    """Adds nodes comprising of neighbor (+source) info to the frontier"""
+    for pair in neighbors_for_person(source):
         if pair[1] == target:
             return pair
-        frontier.add(Node(pair[1], None, pair[0]))"""
+        frontier.add(Node(pair[1], None, pair[0]))
+
+    explored = set()
 
     while True:
         if frontier.empty(): #checks to see if there are any possibilities left
@@ -110,12 +110,9 @@ def shortest_path(source, target):
         node = frontier.remove()
         explored.add(node)
 
-        """stores (movie_id, person_id) pairs in neighbors set"""
-        neighbors = neighbors_for_person(node.state)
-
         """iterates through neighbors set checking for matches and adding nodes
         to the frontier if they have not appeared earlier"""
-        for pair in neighbors:
+        for pair in neighbors_for_person(node.state):
             """returns path of source to target if a match is identified"""
             if pair[1] == target:
                 path = []
