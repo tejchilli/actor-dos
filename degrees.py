@@ -97,7 +97,9 @@ def shortest_path(source, target):
     """Adds nodes comprising of neighbor (+source) info to the frontier"""
     for pair in neighbors_for_person(source):
         if pair[1] == target:
-            return pair
+            path = []
+            path.append((pair[0], pair[1]))
+            return path
         frontier.add(Node(pair[1], None, pair[0]))
 
     explored = set()
