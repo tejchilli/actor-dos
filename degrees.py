@@ -110,7 +110,7 @@ def shortest_path(source, target):
         node = frontier.remove()
         explored.add(node)
 
-        """iterates through neighbors set checking for matches and adding nodes
+        """iterates through neighbors checking for matches and adding nodes
         to the frontier if they have not appeared earlier"""
         for pair in neighbors_for_person(node.state):
             """returns path of source to target if a match is identified"""
